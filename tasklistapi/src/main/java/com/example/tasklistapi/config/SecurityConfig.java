@@ -1,7 +1,5 @@
 package com.example.tasklistapi.config;
 
-import com.example.tasklistapi.model.User;
-
 import java.util.List;
 
 import org.springframework.context.annotation.Bean;
@@ -54,7 +52,7 @@ public class SecurityConfig {
     public UserDetailsService userDetailsService() {
         return username -> {
             // Fetch our application's user entity from the repository.
-            User appUser = userRepository.findByUsername(username)
+            com.example.tasklistapi.model.User appUser = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
 
             // Convert our user entity into a Spring Security UserDetails object.
